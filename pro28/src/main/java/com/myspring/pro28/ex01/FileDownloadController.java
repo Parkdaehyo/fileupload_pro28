@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-/*@Controller*/
+@Controller
 public class FileDownloadController {
 	private static String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
 
@@ -29,8 +29,8 @@ public class FileDownloadController {
 		FileInputStream in = new FileInputStream(file);
 		byte[] buffer = new byte[1024 * 8];
 		while (true) {
-			int count = in.read(buffer); // ¹öÆÛ¿¡ ÀÐ¾îµéÀÎ ¹®ÀÚ°³¼ö
-			if (count == -1) // ¹öÆÛÀÇ ¸¶Áö¸·¿¡ µµ´ÞÇß´ÂÁö Ã¼Å©
+			int count = in.read(buffer); // ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½
+			if (count == -1) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ Ã¼Å©
 				break;
 			out.write(buffer, 0, count);
 		}

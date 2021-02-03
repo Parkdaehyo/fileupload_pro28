@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 
-/*@Controller*/
+@Controller
 public class FileUploadController  {
 	private static final String CURR_IMAGE_REPO_PATH = "c:\\spring\\image_repo";
 	@RequestMapping(value="/form")
@@ -43,7 +43,7 @@ public class FileUploadController  {
 		map.put("fileList", fileList);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("map", map);
-		mav.setViewName("result");
+		mav.setViewName("result"); //result.jspë¡œ í¬ì›Œë”©.
 		return mav;
 	}
 	
@@ -57,12 +57,12 @@ public class FileUploadController  {
 			fileList.add(originalFileName);
 			File file = new File(CURR_IMAGE_REPO_PATH +"\\"+ fileName);
 			if(mFile.getSize()!=0){ //File Null Check
-				if(! file.exists()){ //°æ·Î»ó¿¡ ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
-					if(file.getParentFile().mkdirs()){ //°æ·Î¿¡ ÇØ´çÇÏ´Â µğ·ºÅä¸®µéÀ» »ı¼º
-						file.createNewFile(); //ÀÌÈÄ ÆÄÀÏ »ı¼º
+				if(! file.exists()){ //ï¿½ï¿½Î»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+					if(file.getParentFile().mkdirs()){ //ï¿½ï¿½Î¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+						file.createNewFile(); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					}
 				}
-				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName)); //ÀÓ½Ã·Î ÀúÀåµÈ multipartFileÀ» ½ÇÁ¦ ÆÄÀÏ·Î Àü¼Û
+				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH +"\\"+ originalFileName)); //ï¿½Ó½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ multipartFileï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½
 			}
 		}
 		return fileList;
